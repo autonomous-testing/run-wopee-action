@@ -1,0 +1,45 @@
+name: 'Run Wopee'
+description: 'Run tests by Wopee bot using docker container'
+
+inputs:
+  image:
+    description: 'Full path to Wopee image'
+    default: 'ghcr.io/autonomous-testing/wopee:latest'
+    required: false
+
+  config:
+    description: 'Path to config file relative to current working directory'
+    default: config.yaml
+    required: false
+
+  s3_host:
+    description: 'Host for accessing files compatible with s3 api'
+    default: ''
+    required: true
+
+  s3_access_key:
+    description: 'Access key for accessing files compatible with s3 api'
+    default: ''
+    required: true
+
+  s3_secret_key:
+    description: 'Secret key for accessing files compatible with s3 api'
+    default: ''
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+        
+    - name: Run Wopee using docker
+      shell: bash
+      env:
+        IMAGE: ${{ inputs.image }}
+        CONFIG: ${{ inputs.config }}
+        S3_HOST: ${{ inputs.s3_host }}
+        S3_ACCESS_KEY: ${{ inputs.s3_access_key }}
+        S3_SECRET_KEY: ${{ inputs.s3_secret_key }}
+        SECCOMP_PROFILE: ${{ github.action_path }}/seccomp_profile.json
+      run: |
+        sh ${{ github.action_path }}/run-wopee.sh \
+          
