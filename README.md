@@ -12,7 +12,7 @@ on:
 
 jobs:
   run-wopee:
-    name: Build + smoke
+    name: Run Wopee
     runs-on: ubuntu-latest
 
     steps:
@@ -69,7 +69,7 @@ sh run-wopee.sh
 
 ```
 
-## Example usage of direct run in docker (NOT RECOMMANDED)
+## Example usage of direct run in docker (NOT RECOMMENDED)
 
 ```Bash
 
