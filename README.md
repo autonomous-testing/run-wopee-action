@@ -50,21 +50,21 @@ Following inputs can be used as `step.with` keys
 ## Example usage of run-wopee.sh script
 
 ```Bash
-
 # First login to container registry
-
 # For GitHub container registry (ghcr.io) see https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
- 
 export CR_PAT=YOUR_TOKEN
 echo $CR_PAT | docker login ghcr.io -u YOUR_USERNAME --password-stdin
 
+# Optionaly select image and config file
 export IMAGE=ghcr.io/autonomous-testing/wopee:latest # optional, default value: ghcr.io/autonomous-testing/wopee:latest
 export CONFIG=wopee_config_for_your_project.yaml # optional, default value: config.yaml
 
+# Setup access to file sotrage
 export S3_HOST=s3.example.wopee.io
 export S3_ACCESS_KEY=username_for_s3
 export S3_SECRET_KEY=password_for_s3
 
+# Run Wopee
 sh run-wopee.sh
 
 ```
@@ -72,7 +72,7 @@ sh run-wopee.sh
 ## Example usage of direct run in docker (NOT RECOMMENDED)
 
 ```Bash
-
+# See the example
 cat run-wopee.sh
 
 ```
@@ -80,7 +80,7 @@ cat run-wopee.sh
 ## Example usage of direct run of bot (NEVER DO THAT)
 
 ```Bash
-
+# You have been warned
 wopee wopee_config_for_your_project.yaml
 
 ```
