@@ -31,7 +31,7 @@ echo "SECCOMP_PROFILE: $SECCOMP_PROFILE"
 docker pull ${IMAGE}
 
 docker run --rm \
-    -v $LOCAL_CONFIG_MOUNT:$CONTAINER_CONFIG_MOUNT:ro
+    -v $LOCAL_CONFIG_MOUNT:$CONTAINER_CONFIG_MOUNT:ro \
     -e CONFIG \
     -e S3_HOST \
     -e S3_ACCESS_KEY \
