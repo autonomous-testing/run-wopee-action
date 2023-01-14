@@ -32,7 +32,7 @@ docker pull ${IMAGE}
 
 docker run --rm \
     -v $LOCAL_CONFIG_MOUNT:$CONTAINER_CONFIG_MOUNT:ro \
-    --env-file <(env) \
+    --env-file <(env | sed "/^PATH=/d") \ # exclude PATH environment variable
     --ipc=host \
     --network=host \
     --security-opt seccomp=$SECCOMP_PROFILE \
