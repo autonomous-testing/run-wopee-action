@@ -30,9 +30,19 @@ echo "SECCOMP_PROFILE: $SECCOMP_PROFILE"
 
 docker pull ${IMAGE}
 
-env
-    # --env-file <(env | sed '/^PATH=/d') \
+echo "# Runner env:"
+echo "#############"
+echo
 
+env
+
+echo
+echo
+
+    # --env-file <(env | sed '/^PATH=/d') \
+echo "# Docker env:"
+echo "#############"
+echo
 docker run --rm \
     -v $LOCAL_CONFIG_MOUNT:$CONTAINER_CONFIG_MOUNT:ro \
     --ipc=host \
