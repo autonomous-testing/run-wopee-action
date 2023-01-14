@@ -41,5 +41,5 @@ runs:
         S3_SECRET_KEY: ${{ inputs.s3_secret_key }}
         SECCOMP_PROFILE: ${{ github.action_path }}/seccomp_profile.json
       run: |
-        sh ${{ github.action_path }}/run-wopee.sh \
+        bash ${{ github.action_path }}/run-wopee.sh \
           
