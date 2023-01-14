@@ -32,7 +32,7 @@ docker pull ${IMAGE}
 
 docker run --rm \
     -v $LOCAL_CONFIG_MOUNT:$CONTAINER_CONFIG_MOUNT:ro \
-    --env-file <(env | sed '/^PATH=|^HOME=|^USER=|^_=/d') \
+    --env-file <(env | sed '/^PATH=/d;/^HOME=/d;/^USER=/d;/^_=/d') \
     --ipc=host \
     --network=host \
     --security-opt seccomp=$SECCOMP_PROFILE \
