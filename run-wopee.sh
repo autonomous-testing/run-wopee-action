@@ -36,4 +36,4 @@ docker run --rm \
     --ipc=host \
     --network=host \
     --security-opt seccomp=$SECCOMP_PROFILE \
-    ${IMAGE}
+    ${IMAGE} env
