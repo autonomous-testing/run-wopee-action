@@ -9,7 +9,7 @@ inputs:
 
   config:
     description: 'Path to config file relative to current working directory'
-    default: config.yaml
+    default: ''
     required: false
 
   env_file:
