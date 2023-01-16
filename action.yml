@@ -45,9 +45,9 @@ runs:
       shell: bash
       env:
         IMAGE: ${{ inputs.image }}
+        CONTAINER_NAME: ${{ inputs.container_name }}
         CONFIG: ${{ inputs.config }}
         ENV_FILE: ${{ inputs.env_file  }}
-        CONTAINER_NAME: ${{ inputs.container_name }}
         S3_HOST: ${{ inputs.s3_host }}
         S3_ACCESS_KEY: ${{ inputs.s3_access_key }}
         S3_SECRET_KEY: ${{ inputs.s3_secret_key }}
