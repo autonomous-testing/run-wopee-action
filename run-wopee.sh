@@ -14,7 +14,7 @@ echo "CONTAINER_NAME: $CONTAINER_NAME"
 
 if [ -z ${CONFIG+x} ] || [ "$CONFIG" == "" ] ; then
     echo "Warning: CONFIG is not set."
-    echo "" > .config_not_set.yaml
+    echo "config_not_set: true" > .config_not_set.yaml
     export CONFIG=.config_not_set.yaml
 fi
 echo "CONFIG: $CONFIG"
