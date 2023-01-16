@@ -12,9 +12,8 @@ if [ -z ${CONTAINER_NAME+x} ]; then
 fi
 echo "CONTAINER_NAME: $CONTAINER_NAME"
 
-if [ -z ${CONFIG+x} ]; then
-    echo "Warning: CONFIG not set, using default"
-    export CONFIG=config.yaml
+if [ -z ${CONFIG+x} ] || [ "$CONFIG" == "" ] ; then
+    echo "Warning: CONFIG is not set."
 fi
 echo "CONFIG: $CONFIG"
 
