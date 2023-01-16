@@ -24,7 +24,7 @@ jobs:
               password: ${{ secrets.wopee_registry_password }}
 
         - name: Run Wopee using docker
-          uses: autonomous-testing/run-wopee-action@v1
+          uses: autonomous-testing/run-wopee-action@v3
           with:
               image: ghcr.io/autonomous-testing/wopee:latest # optional, default value: 'ghcr.io/autonomous-testing/wopee:latest'
               container_name: my-wopee-test # optional, default value: 'wopee-runner'
