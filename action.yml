@@ -14,6 +14,7 @@ inputs:
 
   env_file:
     description: 'Path to .env file relative to current working directory'
+    default: '.env_file_not_set.env'
     required: false
 
   container_name:
