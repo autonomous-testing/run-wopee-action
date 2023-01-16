@@ -29,12 +29,12 @@ else
     export CONTAINER_CONFIG_MOUNT=/home/wopee/pwd
 fi
 
-if [ -f $ENV_FILE ]; then
-    echo "File '$ENV_FILE' exists localy and will be used."
-else
+if ! [ -f $ENV_FILE ] || [ "$ENV_FILE" == "" ]; then
     echo "Warning: File '$ENV_FILE' does not exist."
     echo "ENV_FILE_NOT_SET=true" > .env_file_not_set.env
     export ENV_FILE=.env_file_not_set.env
+else
+    echo "File '$ENV_FILE' exists localy and will be used."
 fi
 echo "ENV_FILE: $ENV_FILE"
 
