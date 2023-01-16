@@ -12,6 +12,16 @@ inputs:
     default: config.yaml
     required: false
 
+  env_file:
+    description: 'Path to .env file relative to current working directory'
+    default: ''
+    required: false
+
+  container_name:
+    description: 'Name for container within running wopee. It will be stopped first if it is already running.'
+    default: 'wopee-runner'
+    required: false
+
   s3_host:
     description: 'Host for accessing files compatible with s3 api'
     default: ''
@@ -36,6 +46,8 @@ runs:
       env:
         IMAGE: ${{ inputs.image }}
         CONFIG: ${{ inputs.config }}
+        ENV_FILE: ${{ inputs.env_file  }}
+        CONTAINER_NAME: ${{ inputs.container_name }}
         S3_HOST: ${{ inputs.s3_host }}
         S3_ACCESS_KEY: ${{ inputs.s3_access_key }}
         S3_SECRET_KEY: ${{ inputs.s3_secret_key }}
