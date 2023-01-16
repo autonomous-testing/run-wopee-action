@@ -28,11 +28,7 @@ else
     export CONTAINER_CONFIG_MOUNT=/home/wopee/pwd
 fi
 
-if [ -z ${ENV_FILE+x} ]; then
-    echo "Info: ENV_FILE not set."
-fi
-
-if [ -f $ENV_FILE ]; then
+if [ -n $ENV_FILE ] && [ -f $ENV_FILE ]; then
     echo "File '$ENV_FILE' exists localy and will be used."
 else
     echo "Warning: File '$ENV_FILE' does not exist."
