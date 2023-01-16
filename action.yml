@@ -7,19 +7,19 @@ inputs:
     default: 'ghcr.io/autonomous-testing/wopee:latest'
     required: false
 
+  container_name:
+    description: 'Name for container within running wopee. It will be stopped first if it is already running.'
+    default: 'wopee-runner'
+    required: false
+
   config:
     description: 'Path to config file relative to current working directory'
-    default: ''
+    default: 'config.yaml'
     required: false
 
   env_file:
     description: 'Path to .env file relative to current working directory'
-    default: '.env_file_not_set.env'
-    required: false
-
-  container_name:
-    description: 'Name for container within running wopee. It will be stopped first if it is already running.'
-    default: 'wopee-runner'
+    default: ''
     required: false
 
   s3_host:

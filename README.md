@@ -26,26 +26,30 @@ jobs:
         - name: Run Wopee using docker
           uses: autonomous-testing/run-wopee-action@v1
           with:
-              image: ghcr.io/autonomous-testing/wopee:latest # optional, default value: ghcr.io/autonomous-testing/wopee:latest
-              config: wopee_config_for_your_project.yaml # optional, default value: config.yaml
+              image: ghcr.io/autonomous-testing/wopee:latest # optional, default value: 'ghcr.io/autonomous-testing/wopee:latest'
+              container_name: my-wopee-test # optional, default value: 'wopee-runner'
+              config: wopee_config_for_your_project.yaml # optional, default value: 'config.yaml'
+              env_file: my_test.env # optional, default value: ''
               s3_host: ${{ secrets.wopee_s3_host }}
               s3_access_key: ${{ secrets.wopee_s3_access_key }}
               s3_secret_key: ${{ secrets.wopee_s3_secret_key }}
-
 ```
+
 ## Customizing
 
 ### inputs
 
 Following inputs can be used as `step.with` keys
 
-| Name             | Type    | Default                                  | Description                        |
-|------------------|---------|------------------------------------------|------------------------------------|
-| `image`          | String  | ghcr.io/autonomous-testing/wopee:latest  | Full path to Wopee image |
-| `config`         | String  | config.yaml                              | Path to config file stored in S3 comaptible storage in bucked 'wopee-configs' or path to mounted config file relative to current working directory. |
-| `s3_host`        | String  |                                          | Host for accessing files compatible with s3 api |
-| `s3_access_key`  | String  |                                          | Access key for accessing files compatible with s3 api |
-| `s3_secret_key`  | String  |                                          | Secret key for accessing files compatible with s3 api |
+| Name             | Type   | Default                                 | Description                                                                                                                                         |
+| ---------------- | ------ | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `image`          | String | ghcr.io/autonomous-testing/wopee:latest | Full path to Wopee image                                                                                                                            |
+| `container_name` | String | wopee-runner                            | Name for container within running wopee. It will be stopped first if it is already running.                                                         |
+| `config`         | String | config.yaml                             | Path to config file stored in S3 comaptible storage in bucked 'wopee-configs' or path to mounted config file relative to current working directory. |
+| `env_file`       | String |                                         | Path to .env file relative to current working directory. All contained variabless will be loaded into container.                                    |
+| `s3_host`        | String |                                         | Host for accessing files compatible with s3 api                                                                                                     |
+| `s3_access_key`  | String |                                         | Access key for accessing files compatible with s3 api                                                                                               |
+| `s3_secret_key`  | String |                                         | Secret key for accessing files compatible with s3 api                                                                                               |
 
 ## Example usage of run-wopee.sh script
 
@@ -57,7 +61,9 @@ echo $CR_PAT | docker login ghcr.io -u YOUR_USERNAME --password-stdin
 
 # Optionaly select image and config file
 export IMAGE=ghcr.io/autonomous-testing/wopee:latest # optional, default value: ghcr.io/autonomous-testing/wopee:latest
-export CONFIG=wopee_config_for_your_project.yaml # optional, default value: config.yaml
+export CONTAINER_NAME=my-wopee-test # optional, default value: 'wopee-runner'
+export CONFIG=wopee_config_for_your_project.yaml # optional, default value: 'config.yaml'
+export ENV_FILE=my_test.env # optional, default value: ''
 
 # Setup access to file sotrage
 export S3_HOST=s3.example.wopee.io
@@ -66,7 +72,6 @@ export S3_SECRET_KEY=password_for_s3
 
 # Run Wopee
 sh run-wopee.sh
-
 ```
 
 ## Example usage of direct run in docker (NOT RECOMMENDED)
@@ -74,7 +79,6 @@ sh run-wopee.sh
 ```Bash
 # See the example
 cat run-wopee.sh
-
 ```
 
 ## Example usage of direct run of bot (NEVER DO THAT)
@@ -82,5 +86,4 @@ cat run-wopee.sh
 ```Bash
 # You have been warned
 wopee wopee_config_for_your_project.yaml
-
 ```
